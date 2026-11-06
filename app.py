@@ -1,15 +1,18 @@
 import web
 
-from mvc.controllers.index import index
-from mvc.controllers.contactos import contactos
+from mvc.controllers.index import Index
+from mvc.controllers.contactos import Contactos
+
 
 urls = (
-   '/','Index'
-   '/contactos','mvc.controllers.contactos.contactos',
-
+    '/', 'Index',
+    '/contactos', 'Contactos',
 )
+
 
 app = web.application(urls, globals())
 
+
 if __name__ == "__main__":
+    web.config.debug = False
     app.run()
