@@ -1,0 +1,22 @@
+$def with(contactos)
+
+<h1>Contactos</h1>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Teléfono</th>
+  </tr>
+  $for c in contactos:
+    <tr>
+      <td>$c['id']</td>
+      <td>$c['nombre']</td>
+      <td>$c['email']</td>
+      <td>$c['telefono']</td>
+    </tr>
+</table>
+
+<br>
+<a href="/"><button type="button">Volver al inicio</button></a>
