@@ -6,10 +6,13 @@ render = web.template.render('mvc/views', base='template')
 class VerContacto:
 
     def GET(self):
-        datos = web.input()
-        id_contacto = datos.id
+        datos = web.input(id=None)
+        contacto = None
 
-        modelo = ModelContactos()
-        contacto = modelo.buscarContacto(id_contacto)[0]
+        if datos.id:
+            modelo = ModelContactos()
+            resultado = modelo.buscarContacto(datos.id)
+            if resultado:
+                contacto = resultado[0]
 
         return render.ver_contacto(contacto)
