@@ -3,6 +3,7 @@ from mvc.models.model_contactos import ModelContactos
 
 render = web.template.render('mvc/views', base='template')
 
+
 class BorrarContacto:
 
     def GET(self):
@@ -16,12 +17,11 @@ class BorrarContacto:
                 contacto = resultado[0]
 
         return render.borrar_contacto(contacto)
-
     def POST(self):
-        datos = web.input()
-        id = datos.id
+        datos = web.input(id=None)
 
-        modelo = ModelContactos()
-        modelo.borrarContacto(id)
+        if datos.id:
+            modelo = ModelContactos()
+            modelo.borrarContacto(datos.id)
 
-        raise web.seeother('/contactos')
+        return render.contacto_borrado()  # type: ignore

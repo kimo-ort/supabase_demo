@@ -6,10 +6,22 @@ render = web.template.render('mvc/views', base='template')
 class ActualizarContacto:
 
     def GET(self):
-        datos = web.input()
-        id = datos.id
+        datos = web.input(id=None)
+        contacto = None
 
-        modelo = ModelContactos()
-        contacto = modelo.ActualizarContacto(id)[0]
+        if datos.id:
+            modelo = ModelContactos()
+            resultado = modelo.buscarContacto(datos.id)
+            if resultado:
+                contacto = resultado[0]
 
-        return render.Actualizar_contacto(contacto)
+        return render.actualizar_contacto(contacto)
+
+    def POST(self):
+        datos = web.input(id=None, nombre="", email="", telefono="")
+
+        if datos.id:
+            modelo = ModelContactos()
+            modelo.actualizarContacto(datos.id, datos.nombre, datos.email, datos.telefono)
+
+        raise web.seeother('/contactos')

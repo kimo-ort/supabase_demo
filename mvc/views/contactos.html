@@ -3,28 +3,31 @@ $def with (datos)
 
 <a href="/insertar_contacto">Nuevo Contacto</a>
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Email</th>
-            <th>Teléfono</th>
-            <th>Ver</th>
-            <th>Actualizar</th>
-            <th>Borrar</th>
-        </tr>
-    </thead>
-    <tbody>
-        $for registro in datos:
+$if datos:
+    <table>
+        <thead>
             <tr>
-                <td>$registro["id"]</td>
-                <td>$registro["nombre"]</td>
-                <td>$registro["email"]</td>
-                <td>$registro["telefono"]</td>
-                <td><a href="/ver_contacto?id=$registro['id']">Ver</a></td>
-                <td><a href="/actualizar_contacto?id=$registro['id']">Actualizar</a></td>
-                <td><a href="/borrar_contacto?id=$registro['id']">Borrar</a></td>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Teléfono</th>
+                <th>Ver</th>
+                <th>Actualizar</th>
+                <th>Borrar</th>
             </tr>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            $for registro in datos:
+                <tr>
+                    <td>$registro["id"]</td>
+                    <td>$registro["nombre"]</td>
+                    <td>$registro["email"]</td>
+                    <td>$registro["telefono"]</td>
+                    <td><a href="/ver_contacto?id=$registro['id']">Ver</a></td>
+                    <td><a href="/actualizar_contacto?id=$registro['id']">Actualizar</a></td>
+                    <td><a href="/borrar_contacto?id=$registro['id']">Borrar</a></td>
+                </tr>
+        </tbody>
+    </table>
+$else:
+    <p>No hay contactos registrados.</p>

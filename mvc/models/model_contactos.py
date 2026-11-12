@@ -30,3 +30,15 @@ class ModelContactos():
             "telefono": telefono
         }).execute()
         return response.data
+
+    def actualizarContacto(self, id_contacto, nombre, email, telefono):
+        response = self.supabase.table("contactos").update({
+            "nombre": nombre,
+            "email": email,
+            "telefono": telefono
+        }).eq("id", id_contacto).execute()
+        return response.data
+
+    def borrarContacto(self, id_contacto):
+        response = self.supabase.table("contactos").delete().eq("id", id_contacto).execute()
+        return response.data
