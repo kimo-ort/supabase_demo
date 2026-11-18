@@ -7,6 +7,8 @@ $if datos:
     <table>
         <thead>
             <tr>
+                
+                <th>Foto</th>
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Email</th>
@@ -19,6 +21,7 @@ $if datos:
         <tbody>
             $for registro in datos:
                 <tr>
+                    <td><img src="/static/default.png" alt="Foto" width="50" height="50"></td>
                     <td>$registro["id"]</td>
                     <td>$registro["nombre"]</td>
                     <td>$registro["email"]</td>
