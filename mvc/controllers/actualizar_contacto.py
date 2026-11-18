@@ -25,4 +25,4 @@ class ActualizarContacto:
             modelo = ModelContactos()
             modelo.actualizarContacto(datos.id, datos.nombre, datos.email, datos.telefono)
 
-        raise web.seeother('/contactos')
+        raise web.HTTPError('303 See Other', {'Location': '/contactos'})

@@ -29,11 +29,11 @@ def iniciarSesion(self, email:str, password:str)->str:
              }
         )
 
-print(f"inicio de sesionn exitoso")
-
-
-
-
+        print(f"Inicio de sesión exitoso:{response.session.access_token}")
+            return response.session.access_token
+    except Exception as error:
+         logger.error(f"ERROR 101: {str(error)}")
+         print(f"ERROR 101: {str(error)}")
 
 if __name__ == "__main__":
     print("Autenticacion de usuarios")
